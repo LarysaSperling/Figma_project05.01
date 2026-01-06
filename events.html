@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events near New York, NY</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav__row">
+    <a href="index.html" class="nav__logo">
+      <img src="images/logo/meetup_logo.svg" alt="Meetup">
+    </a>
+
+    <div class="nav__search">
+      <img src="images/iu_icons/search.svg" alt="">
+      <input type="text" placeholder="Search events">
+      <span>New York, NY</span>
+      <button>
+        <img src="images/iu_icons/search_white.svg" alt="">
+      </button>
+    </div>
+
+    <div class="nav__right">
+      <a href="#">Log in</a>
+      <button class="btn-primary">Sign up</button>
+    </div>
+  </div>
+</header>
+
+<section class="section container">
+  <h1>Events near New York, NY</h1>
+</section>
+
+
+<section class="filters container">
+  <select id="filter-day">
+    <option value="any">Any day</option>
+  </select>
+
+  <select id="filter-type">
+    <option value="any">Any type</option>
+    <option value="online">Online</option>
+    <option value="offline">Offline</option>
+  </select>
+
+  <select id="filter-distance">
+    <option value="any">Any distance</option>
+    <option value="5">5 km</option>
+    <option value="10">10 km</option>
+    <option value="15">15 km</option>
+    <option value="25">25 km</option>
+    <option value="50">50 km</option>
+    <option value="75">75 km</option>
+    <option value="100">100 km</option>
+  </select>
+
+  <select id="filter-category">
+    <option value="any">Any category</option>
+    <option value="Social Activities">Social Activities</option>
+    <option value="Hobbies and Passions">Hobbies and Passions</option>
+    <option value="Health and Wellbeing">Health and Wellbeing</option>
+    <option value="Business">Business</option>
+    <option value="Technology">Technology</option>
+  </select>
+</section>
+
+
+<section class="section container">
+  <div class="events-grid" id="eventsGrid"></div>
+</section>
+   
+</body>
+<script src="scripts/events.js"></script>
+</html>

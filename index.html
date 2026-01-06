@@ -3,221 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
-    <title>Document</title>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
+   <title>Meetup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet"
   />
+
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-  <header class="nav">
-  <div class="container nav__row">
-
-  
-    <a href="index.html" class="nav__logo">
-      <img src="images/logo/meetup_logo.svg" alt="Meetup">
-    </a>
 
  
-    <div class="nav__search">
-      <img src="images/iu_icons/search.svg" alt="Search">
-      <input type="text" placeholder="Search events">
-      <img src="images/iu_icons/globe.svg" alt="Location">
-      <span>New York, NY</span>
-      <button>
-        <img src="images/iu_icons/search_white.svg" alt="Search">
-      </button>
+  <header class="nav">
+    <div class="container nav__row">
+      <a href="index.html" class="nav__logo">
+        <img src="images/logo/meetup_logo.svg" alt="Meetup">
+      </a>
+
+      <div class="nav__search">
+        <img src="images/iu_icons/search.svg" alt="Search">
+        <input type="text" placeholder="Search events">
+        <span class="nav__divider"></span>
+        <img src="images/iu_icons/globe.svg" alt="Location">
+        <span>New York, NY</span>
+        <button type="button">
+          <img src="images/iu_icons/search_white.svg" alt="Search">
+        </button>
+      </div>
+
+      <div class="nav__right">
+        <img src="images/iu_icons/globe.svg" alt="Language">
+        <a href="#">Log in</a>
+        <button class="btn-primary" type="button">Sign up</button>
+      </div>
+    </div>
+  </header>
+
+  
+  <section class="hero container">
+    <div class="hero__text">
+      <h1>The people platform—Where interests become friendships</h1>
+      <p>
+        Whatever your interest, from hiking and reading to networking and skill
+        sharing, there are thousands of people who share it on Meetup. Events are
+        happening every day—sign up to join the fun.
+      </p>
+      <a href="events.html" class="btn-primary">Join Meetup</a>
     </div>
 
-   
-    <div class="nav__right">
-      <img src="images/iu_icons/globe.svg" alt="Language">
-      <a href="#">Log in</a>
+    <div class="hero__image">
+      <img src="images/hero/irl_event.png" alt="Meetup illustration">
+    </div>
+  </section>
+
+  
+  <section class="section container">
+    <div class="section__header">
+ <h2>
+  Events near
+  <span class="location-badge">
+    <span class="location-text">Mountain View, CA</span>
+    <img src="images/iu_icons/pencil.svg" alt="Edit location">
+  </span>
+</h2>
+      <a href="events.html">See all events</a>
+    </div>
+
+    <div class="events-grid" id="eventsNearGrid"></div>
+  </section>
+
+ 
+  <section class="section container">
+    <div class="section__header">
+      <h2>Upcoming online events</h2>
+      <a href="events.html">See all events</a>
+    </div>
+
+    <div class="events-grid" id="onlineEventsGrid"></div>
+  </section>
+
+  
+  <section class="join container">
+    <div class="join__text">
+      <h2>Join Meetup</h2>
+      <p>
+        People use Meetup to meet new people, learn new things, find support,
+        get out of their comfort zones, and pursue their passions together.
+        Membership is free.
+      </p>
       <button class="btn-primary">Sign up</button>
     </div>
 
-  </div>
-</header>
+    <div class="join__image">
+      <img src="images/illustrations/hands.png" alt="Join Meetup">
+    </div>
+  </section>
 
+  
+  <section class="section container">
+    <h2>Explore top categories</h2>
 
-<section class="hero container">
-  <div class="hero__text">
-    <h1>The people platform—Where interests become friendships</h1>
-    <p>
-      Whatever your interest, from hiking and reading to networking and skill
-      sharing, there are thousands of people who share it on Meetup.
-    </p>
-    <a href="events.html" class="btn-primary">Join Meetup</a>
-  </div>
+    <div class="categories">
+      <div class="category"><img src="images/categories/travel_and_outdoor.svg" alt=""><span>Travel and Outdoor</span></div>
+      <div class="category"><img src="images/categories/social_activities.svg" alt=""><span>Social Activities</span></div>
+      <div class="category"><img src="images/categories/hobbies_and_passions.svg" alt=""><span>Hobbies and Passions</span></div>
+      <div class="category"><img src="images/categories/sports_and_fitness.svg" alt=""><span>Sports and Fitness</span></div>
+      <div class="category"><img src="images/categories/health_and_wellness.svg" alt=""><span>Health and Wellbeing</span></div>
+      <div class="category"><img src="images/categories/technology.svg" alt=""><span>Technology</span></div>
+      <div class="category"><img src="images/categories/art_and_culture.svg" alt=""><span>Art and Culture</span></div>
+      <div class="category"><img src="images/categories/games.svg" alt=""><span>Games</span></div>
+    </div>
+  </section>
 
-  <div class="hero__image">
-    <img src="images/hero/irl_event.png" alt="Meetup illustration">
-  </div>
-</section>
+  
+  <section class="section container">
+    <h2>Popular cities on Meetup</h2>
 
+    <div class="cities">
+      <div class="city"><img src="images/cities/new_york.webp" alt=""><span>New York</span></div>
+      <div class="city"><img src="images/cities/san_francisco.webp" alt=""><span>San Francisco</span></div>
+      <div class="city"><img src="images/cities/chicago.webp" alt=""><span>Chicago</span></div>
+      <div class="city"><img src="images/cities/nashville.webp" alt=""><span>Nashville</span></div>
+      <div class="city"><img src="images/cities/miami.webp" alt=""><span>Miami</span></div>
+    </div>
+  </section>
 
-<section class="section container">
-  <div class="section__header">
-    <h2>Events near <span>New York, NY</span></h2>
-    <a href="events.html">See all events</a>
-  </div>
+ 
+  <section class="section container">
+    <h2>How Meetup works</h2>
 
-  <div class="events-grid">
-
-   
-    <div class="event-card">
-      <img src="images/cards/event_placeholder.png" alt="Event">
-
-      <div class="event-card__content">
-        <span class="badge">In-person event</span>
-        <h3>Day Trading Idea and Strategy</h3>
-
-        <div class="event-info">
-          <img src="images/iu_icons/Calendar.svg" alt="">
-          <span>Mon, Mar 18 · 7:00 PM PDT</span>
+    <div class="how">
+      <div class="howCard">
+        <div class="howIconWrap">
+          <img src="images/iu_icons/search_blue.svg" alt="">
         </div>
+        <div>
+          <h3>Discover events and groups</h3>
+          <p>See who's hosting local events for all the things you love</p>
+          <a href="events.html">Search events and groups</a>
+        </div>
+      </div>
 
-        <div class="event-info">
-          <img src="images/iu_icons/check_mark.svg" alt="">
-          <span>Free</span>
+      <div class="howCard">
+        <div class="howIconWrap">
+          <img src="images/iu_icons/plus.svg" alt="">
+        </div>
+        <div>
+          <h3>Start a group to host events</h3>
+          <p>Create your own Meetup group, and draw from a community of millions</p>
+          <a href="#">Start a group</a>
         </div>
       </div>
     </div>
+  </section>
 
-   
-    <div class="event-card">
-      <img src="images/cards/event_placeholder.png" alt="Event">
+  
+  <section class="section container">
+    <h2>Friendships are made on Meetup</h2>
+    <p class="subtext">
+      Since 2002, members have used Meetup to make new friends, meet like-minded people,
+      spend time on hobbies, and connect with locals over shared interests. Learn how.
+    </p>
 
-      <div class="event-card__content">
-        <span class="badge">Online event</span>
-        <h3>AI Wednesdays – Meet and Greet</h3>
+    <div class="posts">
+      <article class="post">
+        <img src="images/articles/first_article.webp" alt="">
+        <h3>I Used Meetup to Make Friends at Brunch</h3>
+        <p>
+          New Jersey-based writer and college student Brianna Stryker wanted to meet friends
+          in her hometown.
+        </p>
+        <a href="#">Read more</a>
+      </article>
 
-        <div class="event-info">
-          <img src="images/iu_icons/Calendar.svg" alt="">
-          <span>Wed, Mar 13 · 6:30 PM PDT</span>
-        </div>
+      <article class="post">
+        <img src="images/articles/second_article.webp" alt="">
+        <h3>How to Turn Casual Connections into Close Friendships</h3>
+        <p>
+          It’s proven that close friendships are harder to make as an adult. But don’t sweat it.
+        </p>
+        <a href="#">Read more</a>
+      </article>
 
-        <div class="event-info">
-          <img src="images/iu_icons/check_mark.svg" alt="">
-          <span>Free</span>
-        </div>
+      <article class="post">
+        <img src="images/articles/third_article.webp" alt="">
+        <h3>Do You Have the “Right” Number of Friends?</h3>
+        <p>
+          Studies from around the world have tried to help people answer this question.
+        </p>
+        <a href="#">Read more</a>
+      </article>
+    </div>
+  </section>
+
+  
+  <footer class="footer">
+    <div class="container footer__cta">
+      <span>Create your own Meetup group.</span>
+      <button class="btn-outline" type="button">Get Started</button>
+    </div>
+
+    <div class="container footer__cols">
+      <div class="footerCol">
+        <h4>Your Account</h4>
+        <a href="#">Sign up</a>
+        <a href="#">Log in</a>
+        <a href="#">Help</a>
+        <a href="#">Become an Affiliate</a>
+      </div>
+
+      <div class="footerCol">
+        <h4>Discover</h4>
+        <a href="#">Groups</a>
+        <a href="#">Calendar</a>
+        <a href="#">Topics</a>
+        <a href="#">Cities</a>
+        <a href="#">Online Events</a>
+        <a href="#">Local Guides</a>
+        <a href="#">Make Friends</a>
+      </div>
+
+      <div class="footerCol">
+        <h4>Meetup</h4>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Meetup Pro</a>
+        <a href="#">Careers</a>
+        <a href="#">Apps</a>
+        <a href="#">Podcast</a>
       </div>
     </div>
 
-  </div>
-</section>
+    <div class="container footer__bottomRow">
+      <div>
+        <div class="footerSmallTitle">Follow us</div>
+        <div class="footer__socials">
+          <img src="images/iu_icons/facebook.svg" alt="">
+          <img src="images/iu_icons/twitter.svg" alt="">
+          <img src="images/iu_icons/youtube.svg" alt="">
+          <img src="images/iu_icons/instagram.svg" alt="">
+          <img src="images/iu_icons/tiktok.svg" alt="">
+        </div>
+      </div>
 
-
-<section class="join container">
-  <div class="join__text">
-    <h2>Join Meetup</h2>
-    <p>
-      People use Meetup to meet new people, learn new things, find support,
-      and pursue their passions together.
-    </p>
-    <button class="btn-primary">Sign up</button>
-  </div>
-
-  <div class="join__image">
-    <img src="images/illustrations/hands.png" alt="Join Meetup">
-  </div>
-</section>
-
-
-<section class="section container">
-  <h2>Explore top categories</h2>
-
-  <div class="categories">
-    <div class="category">
-      <img src="images/categories/travel_and_outdoor.svg" alt="">
-      <span>Travel and Outdoor</span>
-    </div>
-    <div class="category">
-      <img src="images/categories/social_activities.svg" alt="">
-      <span>Social Activities</span>
-    </div>
-    <div class="category">
-      <img src="images/categories/hobbies_and_passions.svg" alt="">
-      <span>Hobbies and Passions</span>
-    </div>
-    <div class="category">
-      <img src="images/categories/sports_and_fitness.svg" alt="">
-      <span>Sports and Fitness</span>
-    </div>
-    <div class="category">
-      <img src="images/categories/health_and_wellness.svg" alt="">
-      <span>Health and Wellbeing</span>
-    </div>
-    <div class="category">
-      <img src="images/categories/technology.svg" alt="">
-      <span>Technology</span>
-    </div>
-    <div class="category">
-      <img src="images/categories/art_and_culture.svg" alt="">
-      <span>Art and Culture</span>
-    </div>
-    <div class="category">
-      <img src="images/categories/games.svg" alt="">
-      <span>Games</span>
-    </div>
-  </div>
-</section>
-
-
-<section class="section container">
-  <h2>Popular cities on Meetup</h2>
-
-  <div class="cities">
-    <div class="city">
-      <img src="images/cities/new_york.webp" alt="">
-      <span>New York</span>
-    </div>
-    <div class="city">
-      <img src="images/cities/san_francisco.webp" alt="">
-      <span>San Francisco</span>
-    </div>
-    <div class="city">
-      <img src="images/cities/chicago.webp" alt="">
-      <span>Chicago</span>
-    </div>
-    <div class="city">
-      <img src="images/cities/nashville.webp" alt="">
-      <span>Nashville</span>
-    </div>
-    <div class="city">
-      <img src="images/cities/miami.webp" alt="">
-      <span>Miami</span>
-    </div>
-  </div>
-</section>
-
-
-<footer class="footer">
-  <div class="container footer__top">
-    <p>Create your own Meetup group.</p>
-    <button class="btn-outline">Get Started</button>
-  </div>
-
-  <div class="container footer__bottom">
-
-    <div class="footer__socials">
-      <img src="images/iu_icons/Facebook.svg" alt="">
-      <img src="images/iu_icons/Instagram.svg" alt="">
-      <img src="images/iu_icons/TikTok.svg" alt="">
-      <img src="images/iu_icons/Twitter.svg" alt="">
-      <img src="images/iu_icons/YouTube.svg" alt="">
+      <div class="footer__apps">
+        <img src="images/logo/google_play.svg" alt="Google Play">
+        <img src="images/logo/app_store.svg" alt="App Store">
+      </div>
     </div>
 
-    <div class="footer__apps">
-      <img src="images/logo/app_store.svg" alt="App Store">
-      <img src="images/logo/google_play.svg" alt="Google Play">
+    <div class="container footer__legal">
+      <span>© 2024 Meetup</span>
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Do Not Sell or Share My Personal Data</a>
+      <a href="#">Cookie Policy</a>
+      <a href="#">Help</a>
     </div>
-
-  </div>
-</footer>
+  </footer>
 
 </body>
 <script src="scripts/script.js"></script>
