@@ -392,7 +392,12 @@ main{flex:1}
   color:#374151;
   font-weight:500;
 }
-
+.section p{
+  color: var(--muted);   
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 6px;
+}
 
 .cities{
   display:grid;
@@ -679,7 +684,7 @@ main{flex:1}
 
 .footer{
   margin-top:28px;
-  background:#111827;
+  background:#07080b;
   color:#e5e7eb;
 }
 
@@ -687,11 +692,16 @@ main{flex:1}
   padding:18px 0;
   display:flex;
   align-items:center;
-  gap:14px;
-  border-bottom:1px solid rgba(255,255,255,.12);
+  gap: 16px;
+  border-bottom:1px solid rgba(240, 234, 234, 0.12);
   font-weight:500;
 }
-.footer__cta .btn-outline{margin-left:auto}
+.footer__cta .btn-outline{
+  margin-left:0;        
+  padding:8px 14px;      
+  font-size:14px;
+   border-radius: 6px;
+}
 
 .footer__cols{
   padding:22px 0;
@@ -756,6 +766,7 @@ main{flex:1}
   padding:14px 0 22px;
   display:flex;
   align-items:center;
+  justify-content:center; 
   gap:14px;
   flex-wrap:wrap;
   font-size:12px;
@@ -826,41 +837,29 @@ main{flex:1}
 
 .eventsLeft { min-width: 0; }
 
-@media (max-width: 600px) {
-  .filters__scroller {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .filters__scroller > * {
-    flex: 0 0 auto !important;
-  }
-
-  .filters__scroller select {
-    min-width: 220px !important;
-  }
-
-  .filters__track {
-    display: block !important;
-  }
-
-  .footer__apps { display: none; }
-}
 
 @media (max-width: 600px) {
+  .filters__scroller{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    overflow-y:hidden;
+    width:100%;
+    max-width:100%;
+    -webkit-overflow-scrolling:touch;
+
   
-  .filters__scroller {
-    scrollbar-width: none;         
-    -ms-overflow-style: none;      
+    scrollbar-width:none;
+    -ms-overflow-style:none;
   }
-  .filters__scroller::-webkit-scrollbar {
-    display: none;                 
-  }
+  .filters__scroller::-webkit-scrollbar{ display:none; }
+
+  .filters__scroller > *{ flex:0 0 auto; }
+  .filters__scroller select{ min-width:220px; }
+
+  .filters__track{ display:block; }
+
+  .footer__apps{ display:none; }
 }
 
 
