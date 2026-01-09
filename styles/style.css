@@ -328,8 +328,8 @@ main{flex:1}
 
 .join{
   margin:8px auto 10px;
-  background:var(--soft);
-  border-radius:18px;
+  background:#eef6f7;
+  border-radius:12px;
   padding:22px;
   display:grid;
   grid-template-columns:1fr .6fr;
@@ -337,6 +337,9 @@ main{flex:1}
   align-items:center;
 }
 
+.join__text{
+  padding-left: 24px;  
+}
 .join__text h2{
   margin:0 0 10px;
   font-size:28px;
@@ -359,7 +362,7 @@ main{flex:1}
   padding:14px 32px;
   font-size:16px;
   font-weight:500;
-  min-width:180px;
+  min-width:150px;
   text-align:center;
 }
 .join .btn-primary:hover{background:#dc2626}
@@ -374,7 +377,7 @@ main{flex:1}
 
 .category{
   border:1px solid var(--border);
-  background:#fff;
+  background:#eef6f7;
   border-radius:12px;
   padding:14px 10px;
   text-align:center;
@@ -446,6 +449,15 @@ main{flex:1}
 
 .howIconWrap img{width:22px;height:22px}
 
+.howCard{
+  align-items:flex-start;
+}
+
+.howCard h3,
+.howCard p,
+.howCard a{
+  max-width: 310px;   
+}
 .howCard h3{
   margin:0 0 6px;
   font-size:16px;
@@ -874,8 +886,14 @@ main{flex:1}
 
   .hero__text h1{font-size:30px}
 
-  .footer__cols{
-    grid-template-columns:1fr;
-    gap:18px;
+  .categories{
+    grid-template-columns: repeat(2, 1fr);
+    gap:16px;
+  }
+  .footerCol a{ font-size:12px; }
+  .footerCol h4{ font-size:13px;}
+  .footer__cols{ grid-template-columns: repeat(3, minmax(0, 1fr)); 
+
+    gap: 16px;
   }
 }
