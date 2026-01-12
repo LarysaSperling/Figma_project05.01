@@ -38,6 +38,7 @@ const events = [
 const icons = {
   calendar: "images/iu_icons/calendar.svg",
   check: "images/iu_icons/check_mark.svg",
+ vector: "images/iu_icons/vector.svg", 
 };
 
 const eventsNear = [
@@ -157,28 +158,32 @@ const onlineUpcoming = [
 
 function cardTemplate(e) {
   return `
-    <article class="event-card">
-      <img src="${e.image}" alt="">
-      <div class="event-card__content">
-        <span class="badge">${e.type}</span>
-        <h3>${e.title}</h3>
-        <div class="event-meta">${e.category}</div>
+    <article class="event-card event-card--grid">
+      <img class="event-card__img" src="${e.image}" alt="">
 
-        <div class="event-info">
-          <img src="${icons.calendar}" alt="">
-          <span>${e.date}</span>
+      <div class="event-card__content">
+        <h3 class="event-card__title">${e.title}</h3>
+
+        <div class="event-card__meta">${e.category}</div>
+
+        <div class="event-card__row">
+          <img class="event-card__icon" src="${icons.calendar}" alt="">
+          <span class="event-card__text">${e.date}</span>
         </div>
 
-        <div class="event-info">
-          <img src="${icons.check}" alt="">
-          <span>${e.going}</span>
-          <span class="dot">•</span>
-          <span>${e.price}</span>
+        <div class="event-card__row">
+          <img class="event-card__icon" src="${icons.check}" alt="">
+          <span class="event-card__text">${e.going}</span>
+
+          <img class="event-card__icon" src="${icons.vector}" alt="">
+          <span class="event-card__text">${e.price}</span>
         </div>
       </div>
     </article>
   `;
 }
+
+
 
 function render() {
   const nearGrid = document.getElementById("eventsNearGrid");

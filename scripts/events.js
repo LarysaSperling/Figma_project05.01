@@ -66,23 +66,34 @@ const eventsStore = [
   },
 ];
 
+
 const gridEl = document.getElementById("eventsGrid");
 const dayEl = document.getElementById("filter-day");
 const typeEl = document.getElementById("filter-type");
 const distanceEl = document.getElementById("filter-distance");
 const categoryEl = document.getElementById("filter-category");
 
-const filtersScrollerEl = document.querySelector(".filters__scroller");
-const filtersTrackEl = document.querySelector(".filters__track");
+
+function safeText(v) {
+  return String(v ?? "");
+}
 
 function pad2(n) {
   return String(n).padStart(2, "0");
 }
 
-function formatDayOption(dateObj) {
-  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  const m = months[dateObj.getMonth()];
-  const d = dateObj.getDate();
+function dateKey(dateObj) {
+  return dateObj.getTime();
+}
+
+
+function formatFigmaDate(dateObj) {
+  const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
+  const dayName = days[dateObj.getDay()];
+  const month = months[dateObj.getMonth()];
+  const day = dateObj.getDate();
 
   let h = dateObj.getHours();
   const min = pad2(dateObj.getMinutes());
@@ -90,59 +101,35 @@ function formatDayOption(dateObj) {
   h = h % 12;
   if (h === 0) h = 12;
 
-  return `${m} ${d}, ${h}:${min} ${ampm}`;
-}
-
-function dateKey(dateObj) {
- 
-  return dateObj.getTime();
-}
-
-function safeText(str) {
-  return String(str ?? "");
-}
-
-function getBadge(type) {
-  return type === "online" ? "Online event" : "In-person event";
+  return `${dayName}, ${month} ${day} · ${h}:${min} ${ampm} UTC`;
 }
 
 function getMeta(event) {
   const typeLabel = event.type === "online" ? "Online" : "Offline";
-  const dist = event.type === "offline" && typeof event.distance === "number"
-    ? `${event.distance} km`
-    : null;
+  const dist =
+    event.type === "offline" && typeof event.distance === "number"
+      ? `${event.distance} km`
+      : null;
 
   return `${safeText(event.category)}${dist ? ` · ${dist}` : ""} · ${typeLabel}`;
 }
 
-function createCard(event) {
-  const dateLine = formatDayOption(event.date);
 
-  const calendarIcon = "images/iu_icons/calendar.svg";
-  const checkIcon = "images/iu_icons/check_mark.svg";
+function createCard(event) {
+  const dateLine = formatFigmaDate(event.date);
 
   return `
-    <article class="event-card">
-      <img src="${safeText(event.image)}" alt="${safeText(event.title)}" loading="lazy">
+    <article class="event-card event-card--list">
+      <img class="event-card__img" src="${safeText(event.image)}" alt="${safeText(event.title)}" loading="lazy">
       <div class="event-card__content">
-        <span class="badge">${getBadge(event.type)}</span>
-        <h3>${safeText(event.title)}</h3>
-
-        <div class="event-meta">${getMeta(event)}</div>
-
-        <div class="event-info">
-          <img src="${calendarIcon}" alt="">
-          <span>${dateLine}</span>
-        </div>
-
-        <div class="event-info">
-          <img src="${checkIcon}" alt="">
-          <span>Free</span>
-        </div>
+        <div class="event-card__date">${dateLine}</div>
+        <h3 class="event-card__title">${safeText(event.title)}</h3>
+        <div class="event-card__meta">${getMeta(event)}</div>
       </div>
     </article>
   `;
 }
+
 
 function renderEvents(list) {
   if (!gridEl) return;
@@ -155,20 +142,25 @@ function renderEvents(list) {
   gridEl.innerHTML = list.map(createCard).join("");
 }
 
+
 function buildDayOptions() {
   if (!dayEl) return;
 
-  const unique = Array.from(
+  
+  dayEl.querySelectorAll('option:not([value="any"])').forEach(o => o.remove());
+
+  const uniqueDates = Array.from(
     new Map(eventsStore.map(e => [dateKey(e.date), e.date])).values()
   ).sort((a, b) => a.getTime() - b.getTime());
 
-  unique.forEach(dt => {
+  uniqueDates.forEach(dt => {
     const opt = document.createElement("option");
     opt.value = String(dt.getTime());
-    opt.textContent = formatDayOption(dt);
+    opt.textContent = formatFigmaDate(dt);
     dayEl.appendChild(opt);
   });
 }
+
 
 function applyFilters() {
   const dayValue = dayEl?.value ?? "any";
@@ -177,10 +169,11 @@ function applyFilters() {
   const catValue = categoryEl?.value ?? "any";
 
   const filtered = eventsStore.filter(ev => {
-    
+   
     if (dayValue !== "any" && String(ev.date.getTime()) !== dayValue) return false;
 
     if (typeValue !== "any" && ev.type !== typeValue) return false;
+
 
     if (distValue !== "any") {
       const distNum = Number(distValue);
@@ -198,36 +191,6 @@ function applyFilters() {
   renderEvents(filtered);
 }
 
-function initFiltersScrollTrack() {
-  const scroller = document.querySelector(".filters__scroller");
-  const track = document.querySelector(".filters__track");
-  if (!scroller || !track) return;
-
-  function update() {
-    const trackW = track.clientWidth;
-    const scrollW = scroller.scrollWidth;
-    const viewW = scroller.clientWidth;
-    const maxScroll = scrollW - viewW;
-
-    if (maxScroll <= 0) {
-      track.style.setProperty("--thumb-left", "0px");
-      track.style.setProperty("--thumb-width", trackW + "px");
-      return;
-    }
-
-    const thumbW = Math.max(24, Math.round(trackW * (viewW / scrollW)));
-    const left = Math.round((trackW - thumbW) * (scroller.scrollLeft / maxScroll));
-
-    track.style.setProperty("--thumb-left", left + "px");
-    track.style.setProperty("--thumb-width", thumbW + "px");
-  }
-
-  scroller.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
-
-  requestAnimationFrame(update);
-  setTimeout(update, 80);
-}
 
 function init() {
   buildDayOptions();
@@ -237,8 +200,6 @@ function init() {
     if (!sel) return;
     sel.addEventListener("change", applyFilters);
   });
-
-  initFiltersScrollTrack();
 }
 
 document.addEventListener("DOMContentLoaded", init);

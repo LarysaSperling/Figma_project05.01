@@ -13,36 +13,40 @@
 </head>
 
 <body>
-  <header class="nav">
-    <div class="container nav__row">
-      <a href="index.html" class="nav__logo">
-        <img src="images/logo/meetup_logo.svg" alt="Meetup" />
-      </a>
+<header class="nav">
+  <div class="nav__inner">
+    <div class="nav__row">
+    <a href="index.html" class="nav__logo">
+      <img src="images/logo/meetup_logo.svg" alt="Meetup" />
+    </a>
 
-   <div class="nav__search">
-  <div class="nav__field nav__field--query">
-    <img src="images/iu_icons/search.svg" alt="Search">
-    <input type="text" placeholder="Search events">
-  </div>
-
-  <div class="nav__field nav__field--location">
-    <img class="nav__pin" src="images/iu_icons/globe.svg" alt="Location">
-    <input type="text" class="nav__locationInput" value="New York, NY">
-  </div>
-
-  <button class="nav__searchBtn" type="button" aria-label="Search">
-    <img src="images/iu_icons/search_white.svg" alt="">
-  </button>
-</div>
-
-
-
-      <div class="nav__right">
-        <a href="#">Log in</a>
-        <button class="btn-primary" type="button">Sign up</button>
+    <div class="nav__search">
+      <div class="nav__field nav__field--query">
+        <img src="images/iu_icons/search.svg" alt="Search">
+        <input type="text" placeholder="Search events">
       </div>
+
+      <div class="nav__field nav__field--location">
+        <img class="nav__pin" src="images/iu_icons/globe.svg" alt="Location">
+        <input type="text" class="nav__locationInput" value="Mountain View, CA">
+      </div>
+
+      <button class="nav__searchBtn" type="button" aria-label="Search">
+        <img src="images/iu_icons/search_white.svg" alt="">
+      </button>
     </div>
-  </header>
+
+    <div class="nav__right">
+      <div class="nav__lang">
+        <img src="images/iu_icons/globe.svg" alt="Language" />
+        <span>English</span>
+      </div>
+      <a href="#">Log in</a>
+      <button class="btn-primary" type="button">Sign up</button>
+    </div>
+  </div>
+  </div>
+</header>
 
   <main class="eventsPage container">
     <section class="eventsLeft">
@@ -99,15 +103,21 @@
           <div class="mapCard__small">Find events near</div>
           <div class="mapCard__city">New York, NY</div>
         </div>
-        <button class="mapCard__close" type="button" aria-label="Close map">×</button>
       </div>
 
-      <div class="mapCard__body">
-        <img src="images/map/map-thumbnail.png" alt="Map preview" />
-        <a class="mapCard__btn" href="#" role="button">
-          Browse in map <span class="mapCard__arrow">↗</span>
-        </a>
-      </div>
+  <div class="mapCard__body">
+  <button class="mapCard__close" type="button" aria-label="Close map">
+    <img src="images/iu_icons/close.svg" alt="">
+  </button>
+
+  <img class="mapCard__img" src="images/map/map-thumbnail.png" alt="Map preview" />
+
+  <a class="mapCard__btn" href="#" role="button">
+    Browse in map
+    <img class="mapCard__btnIcon" src="images/iu_icons/expandMapIcon.svg" alt="">
+  </a>
+</div>
+
     </aside>
   </main>
 
