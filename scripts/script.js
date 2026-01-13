@@ -1,44 +1,7 @@
-
-const events = [
-  {
-    title: "Day Trading Idea and Strategy",
-    date: "Mon, Mar 18 · 7:00 PM PDT",
-    type: "In-person event",
-    image: "images/cards/event_placeholder.png",
-    category: "Business",
-    price: "Free",
-  },
-  {
-    title: "AI Wednesdays – Meet and Greet",
-    date: "Wed, Mar 13 · 6:30 PM PDT",
-    type: "Online event",
-    image: "images/cards/event_placeholder.png",
-    category: "Technology",
-    price: "Free",
-  },
-  {
-    title: "ROS By-The-Bay March 2024",
-    date: "Thu, Mar 21 · 6:00 PM PDT",
-    type: "Online event",
-    image: "images/cards/event_placeholder.png",
-    category: "Social Activities",
-    price: "Free",
-  },
-  {
-    title: "Free Christian Singles' Dinner",
-    date: "Fri, Mar 29 · 6:00 PM PDT",
-    type: "In-person event",
-    image: "images/cards/event_placeholder.png",
-    category: "Hobbies and Passions",
-    price: "Free",
-  },
-];
-
-
 const icons = {
   calendar: "images/iu_icons/calendar.svg",
   check: "images/iu_icons/check_mark.svg",
- vector: "images/iu_icons/vector.svg", 
+  vector: "images/iu_icons/vector.svg",
 };
 
 const eventsNear = [
@@ -61,7 +24,7 @@ const eventsNear = [
     image: "images/cards/event_placeholder.png",
   },
   {
-    title: "Tech Talks & Quiz: Next-Gen Database Solutions",
+    title: "Tech Talks & Quiz: Next-Gen Database Solutions for Emerging Use Cases",
     category: "Technology",
     date: "WED, MAR 13 · 6:00 PM PDT",
     going: "40 going",
@@ -159,7 +122,7 @@ const onlineUpcoming = [
 function cardTemplate(e) {
   return `
     <article class="event-card event-card--grid">
-      <img class="event-card__img" src="${e.image}" alt="">
+      <img class="event-card__img" src="${e.image}" alt="${e.title}">
 
       <div class="event-card__content">
         <h3 class="event-card__title">${e.title}</h3>
@@ -168,7 +131,7 @@ function cardTemplate(e) {
 
         <div class="event-card__row">
           <img class="event-card__icon" src="${icons.calendar}" alt="">
-          <span class="event-card__text">${e.date}</span>
+          <span class="event-card__date">${e.date}</span>
         </div>
 
         <div class="event-card__row">
@@ -183,14 +146,15 @@ function cardTemplate(e) {
   `;
 }
 
-
+function renderGrid(id, list) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = list.map(cardTemplate).join("");
+}
 
 function render() {
-  const nearGrid = document.getElementById("eventsNearGrid");
-  const onlineGrid = document.getElementById("onlineEventsGrid");
-
-  if (nearGrid) nearGrid.innerHTML = eventsNear.map(cardTemplate).join("");
-  if (onlineGrid) onlineGrid.innerHTML = onlineUpcoming.map(cardTemplate).join("");
+  renderGrid("eventsNearGrid", eventsNear);
+  renderGrid("onlineEventsGrid", onlineUpcoming);
 }
 
 document.addEventListener("DOMContentLoaded", render);
