@@ -41,10 +41,14 @@ body{
   color: var(--text);
 
   min-height: 100vh;
+  display: block;
+  flex-direction: column;
+}
+.page{
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-
 main { 
   flex: 1;
  }
@@ -89,12 +93,11 @@ main {
 }
 
 .nav{
-  position: sticky;
+  position:sticky;
   top: 0;
   z-index: 50;
   width: 100%;
   background: #fff;
-  box-shadow: 0 1px 0 rgba(0,0,0,.06); 
 }
 
 .nav__inner{
@@ -173,7 +176,6 @@ main {
 .nav__locationInput::placeholder{
    color: #6b7280;
    }
-
 .nav__searchBtn{
   border: 0;
   background: #F65858;
@@ -708,7 +710,9 @@ main {
   cursor: default;
 }
 
-.tab--active{ position: relative; }
+.tab--active{ 
+  position: relative;
+ }
 
 .tab--active::after{
   content: "";
@@ -721,7 +725,9 @@ main {
 }
 
 
-.filters{ padding: 10px 0 18px; }
+.filters{ 
+  padding: 10px 0 18px; 
+}
 
 .filters__scroller{
   display: flex;
